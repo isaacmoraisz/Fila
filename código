@@ -1,0 +1,33 @@
+public class Fila {
+    // A única instância da classe Fila
+    private static Fila instanciaUnica;
+
+    // Construtor privado para evitar instanciamento externo
+    private Fila() {
+        // Inicialização do recurso, se necessário
+    }
+
+    // Método público para obter a instância única da classe
+    public static Fila getInstancia() {
+        if (instanciaUnica == null) {
+            // Sincroniza o bloco de código para evitar múltiplas instâncias em ambientes multi-thread
+            synchronized (Fila.class) {
+                if (instanciaUnica == null) {
+                    instanciaUnica = new Fila();
+                }
+            }
+        }
+        return instanciaUnica;
+    }
+
+    // Métodos da classe Fila
+    public void adicionarDocumento(String documento) {
+        // Adiciona um documento à fila de impressão
+        System.out.println("Documento adicionado à fila: " + documento);
+    }
+
+    public void imprimirDocumentos() {
+        // Imprime todos os documentos da fila
+        System.out.println("Imprimindo documentos...");
+    }
+}
